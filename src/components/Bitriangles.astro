@@ -1,0 +1,11 @@
+---
+const { className = '', twColor = ''} = Astro.props;
+const triangleClass = twColor ? twColor : '';
+---
+<div class= { className, twColor }>
+    <div class=`absolute w-0 h-0 border-t-[25px] border-solid border-b-transparent border-r-[50px] border-t-transparent border-b-[25px] right-0 top-1/2 translate-y-[-50%] border-l-0 ${triangleClass}`>
+    </div>
+    <slot/>
+    <div class=`absolute w-0 h-0 border-t-[25px] border-solid border-b-transparent border-l-[50px] border-t-transparent border-b-[25px] left-0 top-1/2 translate-y-[-50%] border-r-0 ${triangleClass}`>
+    </div>
+</div>

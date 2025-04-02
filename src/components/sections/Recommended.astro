@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+
+const books = await getCollection('books');
+---
+<section aria-label="Libros Recomendados">
+    <h1 class="text-2xl font-semibold m-2">
+        Recommended books📖
+    </h1>
+    <div class="">
+            {
+                books.map(book => {
+                    const {slug, data} = book;
+                    const {title, author, img, readtime, description, buy} = data;
+                    return (
+                        <div class="flex border">
+                            <a href={`/books/${slug}`} class="mb-2 xl:mb-0 transition hover:scale-110">
+                                <img 
+                                    transition:name={`img-${slug}`}
+                                    src={`/${img}`} 
+                                    alt="title" 
+                                    class="w-24 mr-5 rounded-lg"
+                                /> 
+                            </a>
+                            <div>
+                                <h2 class="text-2xl font-bold leading-tight text-white">
+                                  {title}
+                                </h2>
+                                <h3 class="font-semibold">
+                                    {`Autór: ${author}`}
+                                </h3>
+                                <p class="mb-4 text-gray-300 max-w-sm">{description}</p>
+                                <span class="text-xd">⏳Lectura en {readtime} minutos.</span>
+                            </div>
+                        </div>
+                    )
+                })
+            }
+        </div>
+    </div>
+</section>
