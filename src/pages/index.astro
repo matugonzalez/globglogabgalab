@@ -3,13 +3,14 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Recommended from '../components/sections/Recommended.astro';
 import Footer from '../components/Footer.astro';
-
+import SearchBar from '../components/sections/SearchBar.astro'
 export const prerender = true;
 ---
 
-<Layout title="Gloglo books" className=''>
+<Layout title="Gloglo books">
     <Header />
     <main>
+        <SearchBar/>
         <Recommended />
     </main>
     <Footer />

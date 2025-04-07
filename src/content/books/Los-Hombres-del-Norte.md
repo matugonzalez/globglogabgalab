@@ -4,6 +4,7 @@ author: John Haywood
 img: HDN.jpg
 readtime: 277
 description: Una historia de los vikingos alejada de mitos y leyendas.
+popularity: 3
 buy:
     spain: https://www.mercadolibre.com.ar/los-hombres-del-norte-la-saga-vikinga-de-john-haywood-editorial-ariel/p/MLA21441773#polycard_client=search-nordic&searchVariation=MLA21441773&wid=MLA1504431320&position=2&search_layout=stack&type=product&tracking_id=33aa8329-e35a-4740-bf3a-ff52a9d799fc&sid=search
     usa: https://www.mercadolibre.com.ar/los-hombres-del-norte-la-saga-vikinga-de-john-haywood-editorial-ariel/p/MLA21441773#polycard_client=search-nordic&searchVariation=MLA21441773&wid=MLA1504431320&position=2&search_layout=stack&type=product&tracking_id=33aa8329-e35a-4740-bf3a-ff52a9d799fc&sid=search

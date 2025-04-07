@@ -3,9 +3,8 @@ import { ClientRouter } from "astro:transitions";
 
 interface Props {
     title: string;
-    className: string;
 }
-const {title, className = ''} = Astro.props;
+const {title} = Astro.props;
 ---
 <!doctype html>
 <html lang="es">
@@ -18,9 +17,7 @@ const {title, className = ''} = Astro.props;
         <ClientRouter />
 	</head>
 	<body>
-        <div class=`${className}`>
-            <slot />
-        </div>
+        <slot />
 	</body>
 </html>
 

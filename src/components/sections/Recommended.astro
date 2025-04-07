@@ -2,6 +2,8 @@
 import { getCollection } from 'astro:content';
 
 const books = await getCollection('books');
+const sortedBooks = books.sort((a , b) => a.data.popularity - b.data.popularity);
+const recommendedBooks = sortedBooks.slice(0, 4);
 ---
 <section aria-label="Libros Recomendados">
     <h1 class="text-2xl font-semibold m-2">
@@ -9,7 +11,7 @@ const books = await getCollection('books');
     </h1>
     <div class="">
             {
-                books.map(book => {
+                recommendedBooks.map(book => {
                     const {slug, data} = book;
                     const {title, author, img, readtime, description, buy} = data;
                     return (

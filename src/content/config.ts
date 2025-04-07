@@ -7,6 +7,7 @@ const books = defineCollection({
         img: z.string(),
         readtime: z.number(),
         description: z.string(),
+        popularity: z.number(),
         buy: z.object({
             spain: z.string().url(),
             usa: z.string().url(),
