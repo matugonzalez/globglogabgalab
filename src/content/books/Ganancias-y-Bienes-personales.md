@@ -1,7 +1,7 @@
 ---
 title: Ganancias y Bienes personales
 author: Mateo gonzalez
-img: GBP.webp
+img: ganancias-y-bienes-personales.webp
 readtime: 224
 description: Ley y decreto reglamentario de cada uno de los gravámenes8.
 popularity: 3

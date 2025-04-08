@@ -1,7 +1,7 @@
 ---
 title: La Gran Biblioteca
 author: Leinad Aitnaru
-img: LGB.jpg
+img: la-gran-biblioteca.jpg
 readtime: 320
 description: Una historia de libros, amantes y mas cosas.
 popularity: 1

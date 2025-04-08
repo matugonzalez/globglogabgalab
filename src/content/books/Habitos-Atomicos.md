@@ -1,7 +1,7 @@
 ---
 title: "Hábitos Atómicos"
 author: "James Clear"
-img: "/images/atomic-habits.jpg"
+img: atomic-habits.jpg
 readtime: 7
 description: "Una guía poderosa para formar buenos hábitos y eliminar los malos, con estrategias prácticas respaldadas por ciencia."
 popularity: 3

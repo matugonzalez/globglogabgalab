@@ -1,7 +1,7 @@
 ---
 title: "El Programador Pragmático"
 author: "Andrew Hunt & David Thomas"
-img: "/images/pragmatic-programmer.jpg"
+img: pragmatic-programmer.webp
 readtime: 8
 description: "Una guía clásica que ofrece consejos prácticos y filosofías para desarrolladores que quieren perfeccionar su oficio y escribir mejor código."
 popularity: 5

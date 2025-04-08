@@ -1,7 +1,7 @@
 ---
 title: "Enfócate (Deep Work)"
 author: "Cal Newport"
-img: "/images/deep-work.jpg"
+img: enfocate.webp
 readtime: 6
 description: "Explora los beneficios del trabajo profundo en un mundo lleno de distracciones, y cómo lograr más trabajando de forma inteligente."
 popularity: 5

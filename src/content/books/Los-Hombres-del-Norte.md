@@ -1,7 +1,7 @@
 ---
 title: Los Hombres del Norte
 author: John Haywood
-img: HDN.jpg
+img: los-hombres-del-norte.jpg
 readtime: 277
 description: Una historia de los vikingos alejada de mitos y leyendas.
 popularity: 3

@@ -1,0 +1,28 @@
+---
+const {slug, data} = Astro.props;
+const { title, author, description, img, readtime } = data;
+---
+<a href={`/books/${slug}`} class="w-md transition hover:scale-105 flex items-center no-underline text-current">
+    <div class="w-full flex items-center p-2 rounded-sm gap-1 bg-linear-60 from-amber-500 via-amber-400 to-amber-300">
+        <img 
+            transition:name={`img-${slug}`}
+            src={`/covers/${img}`} 
+            alt={title}
+            class="w-25 rounded-lg h-full aspect-[5/7]"
+        /> 
+        <div class="flex flex-col">
+            <span class="text-2xl font-bold text-amber-950 tracking-tighter">
+                {title}
+            </span>
+            <span class="font-semibold text-amber-900">
+                {`Autor: ${author}`}
+            </span>
+            <span class="text-black line-clamp-2">
+                {description}
+            </span>
+            <span class="text-xs text-amber-950">
+                ⏳Lectura en {readtime} minutos.
+            </span>
+        </div>
+    </div>
+</a>
