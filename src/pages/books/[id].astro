@@ -1,7 +1,6 @@
 ---
 import { getCollection, render } from "astro:content";
 import BookScore from "../../components/BookScore.astro";
-import {SHOW_BUY_BUTTON} from "astro:env/server"
 import Layout from "../../layouts/Layout.astro";
 import BuyButton from "../../components/BuyButton.astro";
 
@@ -14,12 +13,12 @@ export async function getStaticPaths() {
     }))
 };
 
+
 const { book } = Astro.props;
 const { data, slug } = book;
 const { title, author, img, readtime, description, buy } = data;
 
 const { Content } = await render(book);
-
 export const prerender = true;
 ---
 
@@ -37,8 +36,7 @@ export const prerender = true;
                 <span slot="fallback" class="text-xs opacity-70">Cargando puntuación...</span>
             </BookScore>
             {
-                SHOW_BUY_BUTTON && <BuyButton server:defer buy={buy} />
-
+                <BuyButton server:defer buy={buy} />
             }
         </aside>
         <main>
