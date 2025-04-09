@@ -1,0 +1,18 @@
+---
+interface Props {
+    id:string,
+    name:string,
+    className?:string,
+    placeholder?:string,
+    list?:string,
+}
+const {id, name, className, placeholder, list} = Astro.props;
+---
+<input 
+id={id}
+name={name}
+class= `outline-none rounded-sm text-amber-950 text-lg w-xs bg-amber-200 border-none px-1 ${className ? className : ''}`
+type="search" 
+placeholder={placeholder}
+list={list}
+/>

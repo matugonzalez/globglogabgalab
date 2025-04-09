@@ -3,6 +3,7 @@ import '../../styles/global.css';
 import Header from "../../components/sections/Header.astro";
 import Footer from '../../components/sections/Footer.astro';
 import Layout from '../../layouts/Layout.astro';
+import InputSearch from '../../components/InputSearch.astro';
 const title = Astro.url.searchParams.toString();
 ---
 <Layout title = {title}>
@@ -12,11 +13,10 @@ const title = Astro.url.searchParams.toString();
             <div
                 class=" rounded-sm p-2 flex justify-center"
             >
-                <input 
-                id="search"
-                name="search"
-                type="search" 
-                placeholder="Search some books..."
+                <InputSearch 
+                    id='search'
+                    name='search'
+                    placeholder='Search some books...'
                 />
             </div>
         </aside>
@@ -29,7 +29,7 @@ const title = Astro.url.searchParams.toString();
 </Layout>
 <script>
 import Fuse, { type FuseResult } from "fuse.js";
-import type { Book, Result } from "./types";
+import type { Book } from "./types";
 
     const search = document.querySelector('#search') as HTMLInputElement;
     const searchReadout = document.querySelector('#searchReadout') as HTMLElement;
