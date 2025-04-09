@@ -1,16 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
+import Header from '../components/sections/Header.astro';
 import Recommended from '../components/sections/Recommended.astro';
-import Footer from '../components/Footer.astro';
+import Footer from '../components/sections/Footer.astro';
 import SearchBar from '../components/sections/SearchBar.astro'
+import DailyBook from '../components/sections/DailyBook.astro';
 export const prerender = true;
 ---
 
 <Layout title="Gloglo books">
-    <Header />
     <main>
+        <Header />
         <SearchBar/>
+        <DailyBook />
         <Recommended />
     </main>
     <Footer />

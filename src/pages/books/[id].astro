@@ -3,6 +3,8 @@ import { getCollection, render } from "astro:content";
 import BookScore from "../../components/BookScore.astro";
 import Layout from "../../layouts/Layout.astro";
 import BuyButton from "../../components/BuyButton.astro";
+import Header from "../../components/sections/Header.astro";
+import Footer from '../../components/sections/Footer.astro';
 
 export async function getStaticPaths() {
     const books = await getCollection("books");
@@ -23,13 +25,14 @@ export const prerender = true;
 ---
 
 <Layout title={`${title} - Books`}>
+    <Header />
     <div class="flex gap-12 items-center">
         <aside class="flex flex-col items-center gap-2">
             <a href="/" class="text-4xl hover:opacity-70 no-underline text-white p-2">← Volver Atrás</a>
             <img 
                 transition:name={`img-${slug}`}
                 class="rounded w-72 h-auto" 
-                src={`/${img}`} 
+                src={`/covers/${img}`} 
                 alt={title}
             >
             <BookScore server:defer id={slug}>
@@ -47,4 +50,5 @@ export const prerender = true;
             </div>
         </main>
     </div>
+    <Footer />
 </Layout>
