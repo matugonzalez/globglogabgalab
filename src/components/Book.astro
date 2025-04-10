@@ -4,11 +4,12 @@ import BuyButton from "./BuyButton.astro";
 
 const { book } = Astro.props;
 
-const { title, author, img, readtime, popularity, buy} = book.data;
+const {data, slug} = book;
+const { title, author, img, readtime, popularity, buy} = data;
 const { Content } = await render(book);
 const stars = [...Array(popularity)].map(()=> '⭐').join('')
 ---
-<div class="flex flex-col sm:mx-10 items-center">
+<div class="flex flex-col items-center">
     <h3 class="text-2xl m-0 mb-1 text-center">
         Daily Book
     </h3>
@@ -18,8 +19,8 @@ const stars = [...Array(popularity)].map(()=> '⭐').join('')
             src=`/covers/${img}` 
             alt={title}
         >
-        <div class="flex flex-col justify-between">
-            <div class="flex flex-col">
+        <div class="flex flex-col justify-between items-center">
+            <div class="flex flex-col gap sm:gap-2">
                 <span
                     class="text-lg font-bold tracking-tighter text-amber-950"
                 >
@@ -37,12 +38,25 @@ const stars = [...Array(popularity)].map(()=> '⭐').join('')
                 </span>
                 <BuyButton buy={buy}/>
             </div>
-            <span 
-                class="text-sm text-amber-950 font-semibold"
+            <div>
+                <span 
+                    class="text-sm text-amber-950 font-semibold"
+                >
+                    Popularidad:
+                </span>
+                <span
+                    class="text-lg"
+                >
+                    {stars}
+                </span>
+            </div>
+            <a 
+                href=`/books/${slug}`
+                class="font-semibold no-underline bg-amber-800 hover:scale-105  text-amber-50 px-1 rounded-sm w-fit"
             >
-                Popularidad: {stars}
-            </span>
-        </div>
+                Ir a Libro
+            </a>
+    </div>
     </div>
     <span 
         class="m-1 max-w-4xl"

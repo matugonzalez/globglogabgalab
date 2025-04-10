@@ -4,6 +4,7 @@ async function getBooks() {
     const books = (await getCollection('books'))
     return books.map((book) => ({
             title: book.data.title,
+            author: book.data.author,
             slug: book.slug,
             img: book.data.img,
             description: book.data.description,

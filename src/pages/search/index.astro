@@ -4,153 +4,41 @@ import Header from "../../components/sections/Header.astro";
 import Footer from '../../components/sections/Footer.astro';
 import Layout from '../../layouts/Layout.astro';
 import InputSearch from '../../components/InputSearch.astro';
+import BookDatalist from '../../components/BookDatalist.astro';
 const title = Astro.url.searchParams.toString();
 ---
 <Layout title = {title}>
+    <Header />
     <main>
-        <Header />
-        <aside>
-            <div
-                class=" rounded-sm p-2 flex justify-center"
+        <div
+            class=" rounded-sm p-2 flex flex-col items-center justify-center gap-1"
+        >
+            <InputSearch 
+                id='search'
+                name='search'
+                placeholder='Search some books...'
+                list='books'
+            />
+            <span 
+                id="searchReadout"
+                class="font-bold"
             >
-                <InputSearch 
-                    id='search'
-                    name='search'
-                    placeholder='Search some books...'
-                />
-            </div>
-        </aside>
-        <p id="searchReadout"></p>
-        <section aria-label="Search Results">
-            <ul id="resultsList"></ul>
+            </span>
+        </div>
+        <section 
+            aria-label="Search Results"
+            class="flex justify-center"    
+        >
+            <ul 
+                id="resultsList"
+                class="flex flex-col gap-1 sm:gap-2"
+            >
+            </ul>
         </section>
     </main>
     <Footer />
 </Layout>
-<script>
-import Fuse, { type FuseResult } from "fuse.js";
-import type { Book } from "./types";
-
-    const search = document.querySelector('#search') as HTMLInputElement;
-    const searchReadout = document.querySelector('#searchReadout') as HTMLElement;
-    const resultsList = document.querySelector('#resultsList') as HTMLElement;
-    
-    let SEARCH_DATA:Array<Book>;
-    let FUSE_INSTANCE: Fuse<Book>;
-    const FUSE_OPTIONS = {
-        includeScore: true,
-        shouldSort: true,
-        threshold: 0.5,
-        keys: [
-            {
-                name: 'title',
-                weight: 1,
-            },
-            {
-                name: 'description',
-                weight: 0.75,
-            }
-        ]
-    }
-
-    const updateDocumentTitle = (search:string) => {
-        document.title = search
-            ? `Search results for "${search}"`
-            : 'Search the blog';
-    } 
-
-    const updateSearchReadout = (search:string) => {
-        searchReadout.textContent = search
-            ? `Search results for "${search}"`
-            : 'no search';
-    }
-
-    const updateSearchPageUrl = (searchTerm: string) => {
-        const url = new URL(window.location.href);
-        url.searchParams.set('q', searchTerm);
-        window.history.replaceState(null, '', url)
-    }
-    
-    const generateSearchList = (results:FuseResult<Book>[]) => {
-        const items = results.map((r)=> {
-            const {title, img, description, slug} = r.item;
-            return `
-                <li 
-                    class='flex p-2 border w-2xs rounded-md'
-                >
-                    <img 
-                        class='w-24 mr-5 rounded-lg aspect-auto' 
-                        src='${img}' 
-                        alt='${slug}'
-                    >
-                    <div 
-                        class='flex flex-col'
-                    >
-                        <span
-                            class='font-semibold'
-                        >
-                            ${title}
-                        </span>
-                        <span
-                            class='text-xs'
-                        >
-                            ${description}
-                        </span>
-                    </div>
-                </li>
-            `
-
-        }).join('');
-        return items;
-    }
-    async function fetchSearchResults(search:string) {
-        if (search.length === 0 ) return;
-        resultsList.innerHTML = 'Loading...';
-        if (!SEARCH_DATA) {
-            try {
-                const res = await fetch('/search/search.json');
-                if (!res.ok) {
-                    throw new Error('Something went wrong...');
-                }
-                const data = await res.json();
-                SEARCH_DATA = data;
-            }
-            catch(err) {
-                console.error(err);
-            }
-        }
-        if (SEARCH_DATA && !FUSE_INSTANCE) {
-            FUSE_INSTANCE = new Fuse(SEARCH_DATA, FUSE_OPTIONS);
-        }
-        if(!FUSE_INSTANCE) return;
-
-        const searchResult = FUSE_INSTANCE.search(search)
-        if (!resultsList) return;
-        resultsList.innerHTML = 
-             searchResult.length > 0
-                ? generateSearchList(searchResult)
-                : 'No results found.'
-    }
-
-
-
-    window.addEventListener('DOMContentLoaded', () => {
-        const urlParams = new URLSearchParams(window.location.search).get('q');
-    
-        if (!(search && urlParams)) return;
-        fetchSearchResults(urlParams);
-        updateDocumentTitle(urlParams);
-        updateSearchReadout(urlParams);
-        search.value = urlParams;
-        search.focus();
-
-    });
-    search.addEventListener('input', () => {
-        const searchTerm = search.value;
-        fetchSearchResults(searchTerm);
-        updateDocumentTitle(searchTerm);
-        updateSearchReadout(searchTerm);
-        updateSearchPageUrl(searchTerm);
-    });
-
-</script>
+<BookDatalist 
+    id="books"
+/>
+<script src="./script.ts"></script>

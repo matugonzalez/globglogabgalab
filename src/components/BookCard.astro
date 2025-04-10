@@ -3,7 +3,7 @@ const {slug, data} = Astro.props;
 const { title, author, description, img, readtime } = data;
 ---
 <a href={`/books/${slug}`} class="sm:w-lg transition hover:scale-105 flex items-center no-underline text-current">
-    <div class="w-full sm:rounded-md p-1 sm:p-2 flex items-center gap-1 bg-linear-60 from-amber-500 via-amber-400 to-amber-300">
+    <div class="w-full rounded-sm sm:rounded-lg lg:rounded-xl p-1 sm:p-2 flex items-center gap-1 bg-linear-60 from-amber-500 via-amber-400 to-amber-300">
         <img 
             transition:name={`img-${slug}`}
             src={`/covers/${img}`} 

@@ -1,7 +1,7 @@
 ---
 title: "Código Limpio"
 author: "Robert C. Martin"
-img: clean-code.jpg
+img: clean-code.webp
 readtime: 10
 description: "Lectura obligatoria para desarrolladores: enseña principios y buenas prácticas para escribir código limpio, legible y mantenible."
 popularity: 4

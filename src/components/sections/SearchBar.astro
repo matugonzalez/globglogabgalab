@@ -1,5 +1,5 @@
 ---
-import { datalist } from "../../content/datalist";
+import BookDatalist from "../BookDatalist.astro";
 import InputSearch from "../InputSearch.astro";
 ---
 <form
@@ -12,25 +12,15 @@ import InputSearch from "../InputSearch.astro";
         placeholder="Search some books..."
         list="books"
     />
+    <BookDatalist 
+        id="books"
+    />
     <button
         type="submit"
         class="rounded-r-sm border-none text-lg bg-linear-60 from-amber-500 via-amber-400 to-amber-400 text-amber-950 hover:to-amber-500 cursor-pointer"
     >
         Search
     </button>
-    <datalist
-        id="books"
-    >
-        {
-            datalist.map((book) => {
-                return (
-                    <option value={book.slug}>
-                        {book.title}
-                    </option>
-                )
-            })
-        }
-    </datalist>
 </form>
 
 <script>

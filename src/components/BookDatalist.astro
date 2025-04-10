@@ -1,0 +1,19 @@
+---
+import { datalist } from "../content/datalist"
+
+const { id } = Astro.props;
+---
+<datalist
+    id={id}
+>
+    {
+        datalist.map((book) => {
+            return (
+                <option 
+                    value={book.slug}>
+                    {book.title}
+                </option>
+            )
+        })
+    }
+</datalist>

@@ -1,5 +1,6 @@
 type Book = {
     title: string;
+    author: string;
     img: string;
     slug: string;
     description: string;
